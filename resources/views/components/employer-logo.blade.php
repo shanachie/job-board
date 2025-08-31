@@ -4,4 +4,6 @@
     /** @var App\Models\Employer $employer */
 @endphp
 
-<img src="{{ asset($employer->logo) }}" alt="" class="rounded-xl" width="{{ $width }}">
+<div class="flex-none min-w-[{{ $width }}px]">
+    <img src="{{ asset($employer->logo) }}" alt="" class="rounded-lg object-fit" width="{{ $width }}">
+</div>
