@@ -1,61 +1,160 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Job Board — Laravel 12 (Proof of Concept)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A small **job board** built with **Laravel 12.0**. Create, list, filter, and view job posts with basic auth and validation.
 
-## About Laravel
+> Note: This is a **proof of concept** built after following the ["30 Days to Learn Laravel"](https://laracasts.com/series/30-days-to-learn-laravel-11) course on [Laracasts](https://laracasts.com/).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Stack
+- PHP 8.2+, **Laravel 12**, Blade
+- Eloquent ORM, Migrations & Seeders
+- Vite + Tailwind CSS
+- DB: SQLite (default) or MySQL
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
+- CRUD for jobs (title, company, location, description, tags)
+- Search/filters & pagination
+- Basic authentication/authorization
+- Server-side validation
+- Seeders for demo data *(optional)*
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Quick Start
 
-## Learning Laravel
+```bash
+# 1. Clone
+git clone <your-repo-url>
+cd <project-folder>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# 2. PHP deps
+composer install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# 3. Env & app key
+cp .env.example .env
+php artisan key:generate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# 4. Database
+#   Option A: SQLite
+touch database/database.sqlite
+#   In .env:
+DB_CONNECTION=sqlite # (comment out other DB_*)
 
-## Laravel Sponsors
+#   Option B: MySQL
+#   In .env:
+DB_CONNECTION=mysql # (and set others DB_* parameters)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 5. URL & assets (important)
+# In .env:
+APP_URL=http://localhost:8000
+ASSET_URL="${APP_URL}/storage"
 
-### Premium Partners
+php artisan storage:link
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# 6. Migrations (+ optional seed)
+php artisan migrate --seed
 
-## Contributing
+# 7. Frontend
+npm install
+npm run dev # or: npm run build
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Demo
+- Email: `test@example.com`
+- Password: `password`
 
-## Code of Conduct
+## Useful scripts
+- `php artisan serve` — local dev server
+- `php artisan test` — run tests
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Structure (brief)
+- `app/Models` — Eloquent models (e.g. `Job`)
+- `app/Http/Controllers` — resource controllers
+- `resources/views` — Blade templates
+- `routes/web.php` — web routes
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Screenshots
+![Dashboard](docs/dashboard.png)
 
 ## License
+Personal/portfolio use. Dependencies retain their own licenses.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+---
+
+# Job Board — Laravel 12 (Proof of Concept) 🇮🇹
+
+
+Piccola **bacheca di offerte di lavoro** sviluppata con **Laravel 12.0**. Consente di creare, elencare, filtrare e visualizzare annunci, con autenticazione e validazione di base.
+
+> Nota: progetto realizzato come **proof of concept** dopo aver seguito il corso ["30 Days to Learn Laravel"](https://laracasts.com/series/30-days-to-learn-laravel-11) su [Laracasts](https://laracasts.com/).
+
+## Stack
+- PHP 8.2+, **Laravel 12**, Blade
+- Eloquent ORM, migrazioni e seeders
+- Vite + Tailwind CSS
+- DB: SQLite (default) o MySQL
+
+## Funzionalità
+- CRUD annunci (titolo, azienda, sede, descrizione, tag)
+- Ricerca/filtri e paginazione
+- Autenticazione/autorizzazione di base
+- Validazione lato server
+- Seeders per dati demo *(opzionale)*
+
+## Setup rapido
+
+```bash
+# 1. Clona
+git clone <url-del-tuo-repo>
+cd <cartella-progetto>
+
+# 2. Dipendenze PHP
+composer install
+
+# 3. Env & chiave app
+cp .env.example .env
+php artisan key:generate
+
+# 4. Database
+#   Opzione A: SQLite
+touch database/database.sqlite
+#   In .env:
+DB_CONNECTION=sqlite # (commenta le altre DB_*)
+
+#   Opzione B: MySQL
+#   In .env:
+DB_CONNECTION=mysql # (oltre alle altre variabili DB_*)
+
+# 5. URL & asset (importante)
+# In .env:
+APP_URL=http://localhost:8000
+ASSET_URL="${APP_URL}/storage"
+
+php artisan storage:link
+
+# 6. Migrazioni (+ seed opzionale)
+php artisan migrate --seed
+
+# 7. Front-end
+npm install
+npm run dev # oppure: npm run build
+```
+
+## Demo
+- Email: `test@example.com`
+- Password: `password`
+
+## Script utili
+- `php artisan serve` — avvia server locale
+- `php artisan test` — esegue i test (se presenti)
+
+## Struttura (in breve)
+- `app/Models` — modelli Eloquent (es. `Job`)
+- `app/Http/Controllers` — controller REST
+- `resources/views` — template Blade
+- `routes/web.php` — rotte web
+
+## Screenshot
+![Dashboard](docs/dashboard.png)
+
+## Licenza
+Uso personale/portfolio. Le dipendenze mantengono le proprie licenze.
